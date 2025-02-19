@@ -1,21 +1,42 @@
-import React from "react";
 import "./globals.css";
 import Link from "next/link";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <nav className="p-4 bg-gray-900 text-white flex justify-between">
-          <h1 className="text-xl font-bold">Joseph Ruiz</h1>
-          <ul className="flex gap-4">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/projects">Projects</Link></li>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
+      <body className="bg-background text-foreground min-h-screen flex flex-col">
+        {/* Navbar - Full width and centered links */}
+        <nav className="w-full bg-gray-900 text-white py-4">
+          <div className="container mx-auto flex justify-center">
+            <ul className="flex gap-12 text-lg">
+              <li>
+                <Link href="/" className="hover:text-blue-400 transition">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects" className="hover:text-blue-400 transition">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-blue-400 transition">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-blue-400 transition">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
         </nav>
-        <main className="p-8">{children}</main>
+
+        {/* Main content centered */}
+        <main className="flex-grow flex justify-center items-center">
+          <div className="w-full max-w-5xl px-4">{children}</div>
+        </main>
       </body>
     </html>
   );
